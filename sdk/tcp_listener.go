@@ -20,7 +20,7 @@ func newTCPListener(address, pluginName, daemonDir string, tlsConfig *tls.Config
 	if runtime.GOOS == "windows" {
 		specDir, err = createPluginSpecDirWindows(pluginName, addr, daemonDir)
 	} else {
-		specDir, err = createPluginSpecDirUnix(pluginName, addr)
+		specDir, err = createPluginSpecDirUnix(pluginName, addr, daemonDir)
 	}
 	if err != nil {
 		return nil, "", err

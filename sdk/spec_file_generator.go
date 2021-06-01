@@ -38,8 +38,11 @@ func createPluginSpecDirWindows(name, address, daemonRoot string) (string, error
 	return pluginSpecDir, nil
 }
 
-func createPluginSpecDirUnix(name, address string) (string, error) {
-	pluginSpecDir := PluginSpecDir("/etc/docker")
+func createPluginSpecDirUnix(name, address, daemonRoot string) (string, error) {
+	if daemonRoot == "" {
+		daemonRoot = "/etc/docker"
+	}
+	pluginSpecDir := PluginSpecDir(daemonRoot)
 	if err := os.MkdirAll(pluginSpecDir, 0755); err != nil {
 		return "", err
 	}
