@@ -22,7 +22,11 @@ func newUnixListener(pluginName string, gid int) (net.Listener, string, error) {
 	if err == nil && listener != nil {
 		return listener, path, nil
 	}
-	listener, err = sockets.NewUnixSocket(path, gid)
+	if filepath.IsAbs(path) && gid == os.Getgid() {
+		listener, err = sockets.NewUnixSocketWithOpts(path, sockets.WithChmod(0660))
+	} else {
+		listener, err = sockets.NewUnixSocket(path, gid)
+	}
 	if err != nil {
 		return nil, "", err
 	}

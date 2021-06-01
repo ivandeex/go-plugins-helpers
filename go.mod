@@ -8,7 +8,7 @@ require (
 	github.com/containerd/containerd v1.5.2 // indirect
 	github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e
 	github.com/docker/docker v20.10.6+incompatible
-	github.com/docker/go-connections v0.4.0
+	github.com/docker/go-connections v0.4.1-0.20210315121638-851a7fca8220
 	github.com/moby/sys/mount v0.2.0 // indirect
 	github.com/stretchr/testify v1.7.0
 	github.com/vbatts/tar-split v0.11.1 // indirect
